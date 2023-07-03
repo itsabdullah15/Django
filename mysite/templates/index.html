@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+        <!-- class="navbar bg-dark border-bottom border-bottom-dark" data-bs-theme="dark" -->
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Youtube</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container">
+        <form action='/analyze' method='post'> {% csrf_token %}
+            <!-- A CSRF (Cross-site Request Forgery) token is a secure random token (e.g., synchronizer token or challenge token) that is used to prevent CSRF attacks.  -->
+
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Enter your text here and let Text Utils do the magic</label>
+                <textarea class="form-control" name='text' id="exampleFormControlTextarea1" rows="9"></textarea>
+            </div>
+
+            <div class="form-check form-switch">
+                <input type="checkbox" name="removepunc" class="form-check-input" role="switch"
+                    id="flexSwitchCheckDefault1">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Remove Punctuation</label>
+            </div>
+
+            <div class="form-check form-switch">
+                <input type="checkbox" name="fullcaps" class="form-check-input" role="switch"
+                    id="flexSwitchCheckDefault2">
+                <label class="form-check-label" for="flexSwitchCheckDefault">UPPERCASE</label>
+            </div>
+
+            <div class="form-check form-switch">
+                <input type="checkbox" name="newlineremover" class="form-check-input" role="switch"
+                    id="flexSwitchCheckDefault3">
+                <label class="form-check-label" for="flexSwitchCheckDefault">New line remover</label>
+            </div>
+
+            <div class="form-check form-switch">
+                <input type="checkbox" name="extraspaceremover" class="form-check-input" role="switch"
+                    id="flexSwitchCheckDefault4">
+                <label class="form-check-label" for="flexSwitchCheckDefault"> Extra Space Remover</label>
+            </div>
+
+            <div class="form-check form-switch">
+                <input type="checkbox" name="charactercounter" class="form-check-input" role="switch"
+                    id="flexSwitchCheckDefault5">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Character Counter</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Analyze Text</button>
+        </form>
+    </div>
+</body>
+
+</html>
