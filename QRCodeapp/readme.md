@@ -18,5 +18,4 @@ A Django-based web application to generate and decode QR codes.
 
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/itsabdullah15/qrcode-web-app.git
-   cd qrcode-web-app
+   git clone https://github.com/itsabdullah15/Django/QRCodeapp
