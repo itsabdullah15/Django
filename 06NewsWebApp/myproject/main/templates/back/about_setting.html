@@ -1,0 +1,80 @@
+{% extends "back/master.html" %}
+{% load static %}
+
+{% block mainblock %}
+
+<!-- Page Header -->
+<div class="content-header">
+    <div class="header-section">
+        <h1>
+            <i class="fa fa-table"></i>Edit About<br>
+            <small>Manage your news by adding, editing, or deleting entries.</small>
+        </h1>
+    </div>
+</div>
+<!-- Breadcrumb Navigation -->
+<ul class="breadcrumb breadcrumb-top">
+    <li>About</li>
+    <li><a href="/panel/news/setting/">Edit</a></li>
+</ul>
+<!-- End Header -->
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- Edit News Block -->
+        <div class="block">
+            <!-- Block Title -->
+            <div class="block-title">
+                <h2><strong>Edit</strong> About</h2>
+            </div>
+            <!-- End Title -->
+
+            <!-- Form Content -->
+            <form action="{% url 'about_setting' %}" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered">
+                {% csrf_token %} 
+
+                <!-- Input for News Summary -->
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <textarea type="text" class="ckeditor" id="txt" name="txt" rows="5" class="form-control" placeholder="Summary">{{about}}</textarea>
+                    </div>
+                </div>
+
+                
+
+
+                <!-- Submit Button -->
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-sm btn-primary">
+                            <i class="fa fa-angle-right"></i> Submit
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <!-- End Form Content -->
+        </div>
+        <!-- End Block -->
+    </div>
+</div>
+
+{% endblock mainblock %}
+
+{% block footerblock %}
+<!-- JavaScript specific to this page -->
+<script src="{% static 'back/js/pages/tablesDatatables.js' %}"></script>
+<script>
+    // Initialize DataTables for this page
+    $(function () { TablesDatatables.init(); });
+</script>
+<script>
+    // Using the class selector to apply CKEditor on all elements with the 'ckeditor' class
+    document.querySelectorAll('.ckeditor').forEach(element => {
+        ClassicEditor
+            .create(element)
+            .catch(error => {
+                console.error('Error initializing CKEditor:', error);
+            });
+    });
+</script>
+{% endblock footerblock %}
