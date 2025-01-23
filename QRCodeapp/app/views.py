@@ -64,4 +64,5 @@ def decodeimg(request):
             context['data'] = decoded_data
         else:
             print("No QR code found in the image.")
+            print("OKAY")
     return render(request,'decode.html',context)
